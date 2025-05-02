@@ -10,17 +10,20 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: Delete arquivos indesejados
+      - name: Deletar arquivos indesejados
         run: |
           rm -f "base de sintomas.xlsx"
           rm -f "base_de_sintomas.xlsx"
           rm -f "base_de_sintomas.xlsx.xlsx"
           rm -f "chatbot-especialidades-main.zip"
+          git rm -f "base de sintomas.xlsx" || true
+          git rm -f "base_de_sintomas.xlsx" || true
+          git rm -f "base_de_sintomas.xlsx.xlsx" || true
+          git rm -f "chatbot-especialidades-main.zip" || true
 
       - name: Commit deletions
         run: |
-          git config user.name "filipecarmo"
-          git config user.email "filipecarmo@users.noreply.github.com"
-          git add -A
-          git commit -m "Remoção de arquivos errados"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git commit -am "Remover arquivos errados"
           git push
