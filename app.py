@@ -15,6 +15,7 @@ df = pd.read_excel("base_de_sintomas.xlsx")
 sintomas = df["Sintoma (frase em linguagem natural)"].tolist()
 especialidades = df["Especialidade sugerida"].tolist()
 
+model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
 sintomas_embeddings = model.encode(sintomas)
 sintomas_embeddings = model.encode(sintomas, convert_to_numpy=True)
 
