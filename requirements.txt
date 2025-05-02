@@ -3,4 +3,4 @@ sentence-transformers
 faiss-cpu
 pandas
 openpyxl
-torch==2.2.2
+numpy<2
