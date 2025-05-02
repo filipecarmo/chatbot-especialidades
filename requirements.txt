@@ -1,6 +1,6 @@
-
 streamlit
 sentence-transformers
 faiss-cpu
 pandas
 openpyxl
+torch==2.0.1
