@@ -16,7 +16,7 @@ sintomas = df["Sintoma (frase em linguagem natural)"].tolist()
 especialidades = df["Especialidade sugerida"].tolist()
 
 model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2', device='cpu')
-sintomas_embeddings = model.encode(sintomas, convert_to_tensor=False)
+sintomas_embeddings = model.encode(sintomas, convert_to_numpy=True)
 sintomas_embeddings_np = np.array(sintomas_embeddings).astype('float32')
 
 dimension = sintomas_embeddings_np.shape[1]
