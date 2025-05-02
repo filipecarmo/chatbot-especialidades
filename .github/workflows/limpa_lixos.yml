@@ -3,6 +3,9 @@ name: Delete arquivos errados
 on:
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   delete-files:
     runs-on: ubuntu-latest
@@ -10,12 +13,12 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: Deletar arquivos indesejados
+      - name: Delete arquivos indesejados
         run: |
-          rm -f "base de sintomas.xlsx"
-          rm -f "base_de_sintomas.xlsx"
-          rm -f "base_de_sintomas.xlsx.xlsx"
-          rm -f "chatbot-especialidades-main.zip"
+          rm -f "base de sintomas.xlsx" || true
+          rm -f "base_de_sintomas.xlsx" || true
+          rm -f "base_de_sintomas.xlsx.xlsx" || true
+          rm -f "chatbot-especialidades-main.zip" || true
           git rm -f "base de sintomas.xlsx" || true
           git rm -f "base_de_sintomas.xlsx" || true
           git rm -f "base_de_sintomas.xlsx.xlsx" || true
@@ -25,5 +28,5 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git commit -am "Remover arquivos errados"
+          git commit -am "Remover arquivos errados" || echo "Nada para commitar"
           git push
